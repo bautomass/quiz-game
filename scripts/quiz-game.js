@@ -90,7 +90,7 @@ function generateCards(topic) {
   const gameCards = `
     <div class="flip-card">
       <div class="flip-card-inner">
-        <div class="flip-card-front">200${this.topic}
+        <div class="flip-card-front" id="topic">200${this.topic}
         </div>
         <div class="flip-card-back">
           <h1>Ģeogrāfija</h1> 
@@ -106,10 +106,10 @@ loadCards.innerHTML = gameCards
 document.getElementById("quiz-game").appendChild(loadCards)
 
 const newQuestionsCards = new QuestionsCards(topic)
-newQuestionsCards.generateCards("Ģeogrāfija")
+newQuestionsCards.generateCards()
 }
 
-// generateCards("Ģeogrāfija")
+generateCards("Ģeogrāfija")
 // generateCards("Ģeogrāfija")
 // generateCards("Ģeogrāfija")
 // generateCards("Ģeogrāfija")
