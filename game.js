@@ -1,120 +1,3 @@
-function quizGameTitles(subject1, subject2, subject3, subject4, subject5, subject6) {
-  class AppLayoutTop {
-    constructor(subject1, subject2, subject3, subject4, subject5, subject6) {
-      this.subject1 = subject1
-      this.subject2 = subject2
-      this.subject3 = subject3
-      this.subject4 = subject4
-      this.subject5 = subject5
-      this.subject6 = subject6
-    }
-    generateTop() {
-      const gameTop = `
-      <div class="overlay">
-      <div class="game-wrapper">
-          <h1 class="game-name">Zināšanu Cīņas<br>
-          </h1>
-      </div>
-      <div class="scoreTable">
-        <div class="teamOne">
-          <p id="teamOneScore">TEAM 
-            <span>🟢</span>
-              <span class="updateScoreT1" id="updateScoreT1"></span>
-          </p>
-        </div>
-        <div class="teamsVs">
-          <img src="/vs.png" alt="" srcset="" style="width: 80px;">
-        </div>
-        <div class="teamTwo">
-          <p id="teamTwoScore">TEAM 
-            <span>🔵</span>
-            <span class="updateScoreT2" id="updateScoreT2"></span>
-          </p>
-        </div>
-      </div>
-      <div class="main-grid">
-        <div class="grid--title">${this.subject1}</div>
-        <div class="grid--title">${this.subject2}</div>
-        <div class="grid--title">${this.subject3}</div>
-        <div class="grid--title">${this.subject4}</div>
-        <div class="grid--title">${this.subject5}</div>
-        <div class="grid--title">${this.subject6}</div>
-      </div>
-    `
-const showGame = document.createElement("div")
-showGame.innerHTML = gameTop
-document.getElementById("quiz-game-top").appendChild(showGame)
-    }
-  }
-const newAppLayoutTop = new AppLayoutTop(subject1, subject2, subject3, subject4, subject5, subject6)
-newAppLayoutTop.generateTop()
-}
-
-quizGameTitles("Ģeogrāfija", "Dziesmas", "Aktieri", "Mūziķi", "Dzīvnieki", "Cilvēki")
-
-function quizGameCards(card, subject, points, question) {
-  class AppLayoutBottom {
-    constructor(card, subject, points, question) {
-      this.card = card
-      this.subject = subject
-      this.points = points
-      this.question = question
-    }
-    generateBottom() {
-      const gameBottom = `
-      <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">${this.card}
-        </div>
-        <div class="flip-card-back">
-          <h1>${this.subject}</h1> 
-          <p class="points">${this.points} Punkti</p> 
-          <p class="question">${this.question}</p>
-        </div>
-      </div>
-    </div>
-    </div>
-      `
-const showCards = document.createElement("div")
-showCards.classList.add("game-card")
-showCards.innerHTML = gameBottom
-document.querySelector(".main-grid").appendChild(showCards)
-    }
-  }
-const newAppLayoutBottom = new AppLayoutBottom(card, subject, points, question)
-newAppLayoutBottom.generateBottom()
-}
-quizGameCards("200", "Ģeogrāfija", "200", "JAUTĀJUMS")
-quizGameCards("200", "Dziesmas", "200", "JAUTĀJUMS")
-quizGameCards("200", "Aktieri", "200", "JAUTĀJUMS")
-quizGameCards("200", "Mūziķi", "200", "JAUTĀJUMS")
-quizGameCards("200", "Dzīvnieki", "200", "JAUTĀJUMS")
-quizGameCards("200", "Cilvēki", "200", "JAUTĀJUMS")
-quizGameCards("400", "Ģeogrāfija", "400", "JAUTĀJUMS")
-quizGameCards("400", "Dziesmas", "400", "JAUTĀJUMS")
-quizGameCards("400", "Aktieri", "400", "JAUTĀJUMS")
-quizGameCards("400", "Mūziķi", "400", "JAUTĀJUMS")
-quizGameCards("400", "Dzīvnieki", "400", "JAUTĀJUMS")
-quizGameCards("400", "Cilvēki", "400", "JAUTĀJUMS")
-quizGameCards("600", "Ģeogrāfija", "600", "JAUTĀJUMS")
-quizGameCards("600", "Dziesmas", "600", "JAUTĀJUMS")
-quizGameCards("600", "Aktieri", "600", "JAUTĀJUMS")
-quizGameCards("600", "Mūziķi", "600", "JAUTĀJUMS")
-quizGameCards("600", "Dzīvnieki", "600", "JAUTĀJUMS")
-quizGameCards("600", "Cilvēki", "600", "JAUTĀJUMS")
-quizGameCards("800", "Ģeogrāfija", "800", "JAUTĀJUMS")
-quizGameCards("800", "Dziesmas", "800", "JAUTĀJUMS")
-quizGameCards("800", "Aktieri", "800", "JAUTĀJUMS")
-quizGameCards("800", "Mūziķi", "800", "JAUTĀJUMS")
-quizGameCards("800", "Dzīvnieki", "800", "JAUTĀJUMS")
-quizGameCards("800", "Cilvēki", "800", "JAUTĀJUMS")
-quizGameCards("1000", "Ģeogrāfija", "1000", "JAUTĀJUMS")
-quizGameCards("1000", "Dziesmas", "1000", "JAUTĀJUMS")
-quizGameCards("1000", "Aktieri", "1000", "JAUTĀJUMS")
-quizGameCards("1000", "Mūziķi", "1000", "JAUTĀJUMS")
-quizGameCards("1000", "Dzīvnieki", "1000", "JAUTĀJUMS")
-quizGameCards("1000", "Cilvēki", "1000", "JAUTĀJUMS")
-
 function loadQuestion(topic, points, question, choices, answer) {
     class Game {
       constructor(topic, points, question, choices, answer) {
@@ -137,7 +20,7 @@ function loadQuestion(topic, points, question, choices, answer) {
         `
         const newContent = document.createElement("div");
         newContent.innerHTML = questions + `<br>`;
-        // document.getElementById("quiz-game").appendChild(newContent);
+        document.getElementById("quiz-game").appendChild(newContent);
 
         const userChoice = newContent.querySelectorAll(".choices")
         userChoice.forEach(button => {
@@ -156,6 +39,91 @@ function loadQuestion(topic, points, question, choices, answer) {
     const newGame = new Game(topic, points, question, choices, answer)
     newGame.showQuestion() 
   }
+
+
+  function generateTitles() {
+    const gameTitles = `
+    <div class="overlay">
+    <div class="game-wrapper">
+        <h1 class="game-name">Zināšanu Cīņas<br>
+        </h1>
+    </div>
+    <div class="scoreTable">
+      <div class="teamOne">
+        <p id="teamOneScore">TEAM 
+          <span>🟢</span>
+            <span class="updateScoreT1" id="updateScoreT1"></span>
+        </p>
+      </div>
+      <div class="teamsVs">
+        <img src="/vs.png" alt="" srcset="" style="width: 80px;">
+      </div>
+      <div class="teamTwo">
+        <p id="teamTwoScore">TEAM 
+          <span>🔵</span>
+          <span class="updateScoreT2" id="updateScoreT2"></span>
+        </p>
+      </div>
+    </div>
+    <div class="main-grid">
+      <div class="grid--title">Ģeogrāfija</div>
+      <div class="grid--title">Dziesmas</div>
+      <div class="grid--title">Aktieri</div>
+      <div class="grid--title">Mūziķi</div>
+      <div class="grid--title">Dzīvnieki</div>
+      <div class="grid--title">Cilvēki</div>
+    </div>
+  `
+  const loadTitles = document.createElement("div")
+  loadTitles.innerHTML = gameTitles
+  document.getElementById("quiz-game").appendChild(loadTitles)
+  }
+
+generateTitles()
+
+function generateCards(topic) {
+  class QuestionCards {
+    constructor(topic) {
+      this.topic = topic
+    }
+  }
+  const gameCards = `
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" id="topic">200${this.topic}
+        </div>
+        <div class="flip-card-back">
+          <h1>Ģeogrāfija</h1> 
+          <p class="points">200 Punkti</p> 
+          <p class="question" onclick="loadQuestion('Ģeogrāfija', '200', 'Kura ir Francijas Galvas Pilsēta?', ['Parīze', 'Berlīne', 'Madride'], 'Parīze')">JAUTĀJUMS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  `
+const loadCards = document.createElement("div")
+loadCards.innerHTML = gameCards
+document.getElementById("quiz-game").appendChild(loadCards)
+
+const newQuestionCards = new QuestionCards(topic)
+newQuestionCards.generateCards()
+}
+
+generateCards("Ģeogrāfija")
+// generateCards("Ģeogrāfija")
+// generateCards("Ģeogrāfija")
+// generateCards("Ģeogrāfija")
+// generateCards("Ģeogrāfija")
+// generateCards()
+// generateCards()
+// generateCards()
+// generateCards()
+
+
+
+
+
+
 
   // loadQuestion('Ģeogrāfija', '200', 'Kura ir Francijas Galvas Pilsēta?', ['Parīze', 'Berlīne', 'Madride'], 'Parīze')
   // loadQuestion('Ģeogrāfija', '400', 'Kura ir vecākā pilsēta Latvijā?', ['Ludza', 'Valmiera', 'Cēsis'], 'Ludza')

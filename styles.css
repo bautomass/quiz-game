@@ -85,7 +85,6 @@ main {
 .main-grid {
   width: max(100% - 2rem);
   max-width: 700px;
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 3px;
@@ -180,4 +179,8 @@ main {
   background: -webkit-linear-gradient(#F85C7C, #FCDF61);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.game-card {
+  height: 100px;
 }/*# sourceMappingURL=styles.css.map */
