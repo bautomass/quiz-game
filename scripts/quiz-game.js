@@ -84,6 +84,7 @@ document.querySelector(".main-grid").appendChild(showCards)
 const newAppLayoutBottom = new AppLayoutBottom(card, subject, points, question)
 newAppLayoutBottom.generateBottom()
 }
+
 quizGameCards("200", "Ģeogrāfija", "200", "JAUTĀJUMS")
 quizGameCards("200", "Dziesmas", "200", "JAUTĀJUMS")
 quizGameCards("200", "Aktieri", "200", "JAUTĀJUMS")
@@ -137,7 +138,7 @@ function loadQuestion(topic, points, question, choices, answer) {
         `
         const newContent = document.createElement("div");
         newContent.innerHTML = questions + `<br>`;
-        // document.getElementById("quiz-game").appendChild(newContent);
+        document.getElementById("quiz-game").appendChild(newContent);
 
         const userChoice = newContent.querySelectorAll(".choices")
         userChoice.forEach(button => {
@@ -154,42 +155,46 @@ function loadQuestion(topic, points, question, choices, answer) {
       }
     }
     const newGame = new Game(topic, points, question, choices, answer)
-    newGame.showQuestion() 
+    newGame.showQuestion()
   }
 
-  // loadQuestion('Ģeogrāfija', '200', 'Kura ir Francijas Galvas Pilsēta?', ['Parīze', 'Berlīne', 'Madride'], 'Parīze')
-  // loadQuestion('Ģeogrāfija', '400', 'Kura ir vecākā pilsēta Latvijā?', ['Ludza', 'Valmiera', 'Cēsis'], 'Ludza')
-  // loadQuestion('Ģeogrāfija', '600', 'Kurš Ir Lielākais Kontinents?', ['Āfrika', 'Āzija', 'Austrālija'], 'Āzija')
-  // loadQuestion('Ģeogrāfija', '800', 'Garākā Upe Āfrikā?', ['Zambezi', 'Kongo', 'Nīla'], 'Nīla')
-  // loadQuestion('Ģeogrāfija', '1000', 'Pasaulē Vismazāk Apdzīvotā Pilsēta?', ['Vatikāns', 'Alūksne', 'Ngerulmuda'], 'Ngerulmuda')
+  function getQuestions(){
+const allQuestions = [
+q1 = loadQuestion('Ģeogrāfija', '200', 'Kura ir Francijas Galvas Pilsēta?', ['Parīze', 'Berlīne', 'Madride'], 'Parīze'),
+q2 = loadQuestion('Ģeogrāfija', '400', 'Kura ir vecākā pilsēta Latvijā?', ['Ludza', 'Valmiera', 'Cēsis'], 'Ludza'),
+q3 = loadQuestion('Ģeogrāfija', '600', 'Kurš Ir Lielākais Kontinents?', ['Āfrika', 'Āzija', 'Austrālija'], 'Āzija'),
+q4 = loadQuestion('Ģeogrāfija', '800', 'Garākā Upe Āfrikā?', ['Zambezi', 'Kongo', 'Nīla'], 'Nīla'),
+q5 = loadQuestion('Ģeogrāfija', '1000', 'Pasaulē Vismazāk Apdzīvotā Pilsēta?', ['Vatikāns', 'Alūksne', 'Ngerulmuda'], 'Ngerulmuda'),
+q6 = loadQuestion('Dziesmas', '200', 'Kā sauc Latvijas Himnas Autoru?', ['Kalniņš Imants', 'Kalniņš Alfrēds', 'Baumaņu Kārlis'], 'Baumaņu Kārlis'),
+q7 = loadQuestion('Dziesmas', '400', 'Kurš Ir Populārākais Mūzikas Novirziens Pasaulē?', ['Roks', 'Hip-Hop/Rap', 'Pop'], 'Pop'),
+q8 = loadQuestion('Dziesmas', '600', 'Kurš No Šiem Singliem Ir Vispopulārākais Singls Jebkad?', ['Ed Sheeran - Shape of You', 'Queen - Bohemian Rhapsody', 'Michael Jackson - Billie Jean'], 'Michael Jackson - Billie Jean'),
+q9 = loadQuestion('Dziesmas', '800', 'Kura Dziesma Ieguva 2020 Grammy Balvu Kā Song Of The Year?', ['Billie Eilish - Bad Guy', 'Lewis Capaldi - Someone You Loved', 'Lil Nas X ft. Billy Ray Cyrus - Old Town Road'], 'Billie Eilish - Bad Guy'),
+q10 = loadQuestion('Dziesmas', '1000', 'Kurš Ir Dziesmas Work Hard Play Hard Autors?', ['Dr. Dre', 'Wiz Khalifa', '2Pac'], 'Wiz Khalifa'),
+q11 = loadQuestion('Aktieri', '200', 'Galvenās Lomas Atveidotājs Filmā Titāniks?', ['Steven Seagal', 'Leonardo Di Kaprio', 'Rowan Atkinson'], 'Leonardo Di Kaprio'),
+q12 = loadQuestion('Aktieri', '400', 'Kurš Ieguva Labākā Aktiera Titulu 2022 Gadā?', ['Anthony Hopkins', 'Gary Oldman', 'Tom Hanks'], 'Anthony Hopkins'),
+q13 = loadQuestion('Aktieri', '600', 'Kurš Ieguva Oskara Balvu Kā Labākais Aktieris Filmā The Godfather?', ['Marlon Brando', 'Al Pacino', 'Robert De Niro'], 'Robert De Niro'),
+q14 = loadQuestion('Aktieri', '800', 'Kurš Aktieris Attēloja Indiana Jones Galveno Lomu?', ['Tom Cruise', 'Sean Connery', 'Harrison Ford'], 'Harrison Ford'),
+q15 = loadQuestion('Aktieri', '1000', 'Kura Aktiere Atveidoja Moniku Seriālā Sirds Mīļā Monika?', ['Rēzija Kalniņa', 'Mirdza Martinsone', 'Dārta Daneviča'], 'Mirdza Martinsone'),
+q16 = loadQuestion('Mūziķi', '200', 'Kādu Instrumentu Spēlē Ģitārists?', ['Klavieres', 'Bungas', 'Ģitāru'], 'Ģitāru'),
+q17 = loadQuestion('Mūziķi', '400', 'Kura Māksliniece Ir Zināma Kā Queen Of Pop?', ['Madonna', 'Mariah Carey', 'Whitney Houston'], 'Madonna'),
+q18 = loadQuestion('Mūziķi', '600', 'Kurš Ir Lead Singer Grupā Queen?', ['Freddie Starr', 'Elvis Presley', 'Freddie Mercury'], 'Freddie Mercury'),
+q19 = loadQuestion('Mūziķi', '800', 'Kurš Ir Lead Singer Grupā The Rolling Stones?', ['Steven Tyler', 'Freddie Mercury', 'Mick Jagger'], 'Mick Jagger'),
+q20 = loadQuestion('Mūziķi', '1000', 'Kura Ir Vispopulārākā Elvis Presley Dziesma?', ['If I Can Dream', 'Always On My Mind', 'Cant Help Falling In Love'], 'Cant Help Falling In Love'),
+q21 = loadQuestion('Dzīvnieki', '200', 'Kuram Dzīvniekam Ir garš kakls un Plankumi?', ['Žirafe', 'Zebra', 'Zīlonis'], 'Žirafe'),
+q22 = loadQuestion('Dzīvnieki', '400', 'Lielākais Zīdītājs Uz Zemes?', ['Nīlszirgs', 'Grizlij Lācis', 'Āfrikas Zīlonis'], 'Āfrikas Zīlonis'),
+q23 = loadQuestion('Dzīvnieki', '600', 'Kurš Ir Ātrākais Dzīvnieks uz Zemes?', ['Gepards', 'Leopards', 'Lauva'], 'Gepards'),
+q24 = loadQuestion('Dzīvnieki', '800', 'Kura No Šīm Zivīm Ir Zivs?', ['Zobenzivs', 'Medūza', 'Jūras Zvaigzne'], 'Zobenzivs'),
+q25 = loadQuestion('Dzīvnieki', '1000', 'Kā Dēvē Daudz Flamingi Vienu Viet (Bars Ar Flamingo)?', ['Ganāmpulks', 'Spiets', 'Kolonija'], 'Kolonija'),
+q26 = loadQuestion('Cilvēki', '200', 'Kura Ķermeņa Daļa Tiek Izmantota Ožai?', ['Deguns', 'Ausis', 'Kājas'], 'Deguns'),
+q27 = loadQuestion('Cilvēki', '400', 'Kurš Ir Lielākais Orgāns Cilvēka Ķermenī?', ['Aknas', 'Plaušas', 'Āda'], 'Āda'),
+q28 = loadQuestion('Cilvēki', '600', 'Kurš Ir Garākais Kauls Cilvēka Ķermenī?', ['Stilba kauls (Tibia)', 'Augšdelma kauls (Humerus)', 'Ciskas kauls (Femur)'], 'Ciskas kauls (Femur)'),
+q29 = loadQuestion('Cilvēki', '800', 'Jūtīgākais Cilvēka Orgāns?', ['Deguns', 'Āda', 'Acis'], 'Āda'),
+q30 = loadQuestion('Cilvēki', '1000', 'Cik % No Kopējiem Skābekļa Un Asins Resursiem Patērē Smadzenes?', ['25%', '20%', '17%'], '20%')
+]
+}
+console.log(getQuestions.allQuestions.loadQuestion[1](topic, points, question, choices, answer));
 
-  // loadQuestion('Dziesmas', '200', 'Kā sauc Latvijas Himnas Autoru?', ['Kalniņš Imants', 'Kalniņš Alfrēds', 'Baumaņu Kārlis'], 'Baumaņu Kārlis')
-  // loadQuestion('Dziesmas', '400', 'Kurš Ir Populārākais Mūzikas Novirziens Pasaulē?', ['Roks', 'Hip-Hop/Rap', 'Pop'], 'Pop')
-  // loadQuestion('Dziesmas', '600', 'Kurš No Šiem Singliem Ir Vispopulārākais Singls Jebkad?', ['Ed Sheeran - Shape of You', 'Queen - Bohemian Rhapsody', 'Michael Jackson - Billie Jean'], 'Michael Jackson - Billie Jean')
-  // loadQuestion('Dziesmas', '800', 'Kura Dziesma Ieguva 2020 Grammy Balvu Kā Song Of The Year?', ['Billie Eilish - Bad Guy', 'Lewis Capaldi - Someone You Loved', 'Lil Nas X ft. Billy Ray Cyrus - Old Town Road'], 'Billie Eilish - Bad Guy')
-  // loadQuestion('Dziesmas', '1000', 'Kurš Ir Dziesmas Work Hard Play Hard Autors?', ['Dr. Dre', 'Wiz Khalifa', '2Pac'], 'Wiz Khalifa')
-  
-  // loadQuestion('Aktieri', '200', 'Galvenās Lomas Atveidotājs Filmā Titāniks?', ['Steven Seagal', 'Leonardo Di Kaprio', 'Rowan Atkinson'], 'Leonardo Di Kaprio')
-  // loadQuestion('Aktieri', '400', 'Kurš Ieguva Labākā Aktiera Titulu 2022 Gadā?', ['Anthony Hopkins', 'Gary Oldman', 'Tom Hanks'], 'Anthony Hopkins')
-  // loadQuestion('Aktieri', '600', 'Kurš Ieguva Oskara Balvu Kā Labākais Aktieris Filmā The Godfather?', ['Marlon Brando', 'Al Pacino', 'Robert De Niro'], 'Robert De Niro')
-  // loadQuestion('Aktieri', '800', 'Kurš Aktieris Attēloja Indiana Jones Galveno Lomu?', ['Tom Cruise', 'Sean Connery', 'Harrison Ford'], 'Harrison Ford')
-  // loadQuestion('Aktieri', '1000', 'Kura Aktiere Atveidoja Moniku Seriālā Sirds Mīļā Monika?', ['Rēzija Kalniņa', 'Mirdza Martinsone', 'Dārta Daneviča'], 'Mirdza Martinsone')
-
-  // loadQuestion('Mūziķi', '200', 'Kādu Instrumentu Spēlē Ģitārists?', ['Klavieres', 'Bungas', 'Ģitāru'], 'Ģitāru')
-  // loadQuestion('Mūziķi', '400', 'Kura Māksliniece Ir Zināma Kā Queen Of Pop?', ['Madonna', 'Mariah Carey', 'Whitney Houston'], 'Madonna')
-  // loadQuestion('Mūziķi', '600', 'Kurš Ir Lead Singer Grupā Queen?', ['Freddie Starr', 'Elvis Presley', 'Freddie Mercury'], 'Freddie Mercury')
-  // loadQuestion('Mūziķi', '800', 'Kurš Ir Lead Singer Grupā The Rolling Stones?', ['Steven Tyler', 'Freddie Mercury', 'Mick Jagger'], 'Mick Jagger')
-  // loadQuestion('Mūziķi', '1000', 'Kura Ir Vispopulārākā Elvis Presley Dziesma?', ['If I Can Dream', 'Always On My Mind', 'Cant Help Falling In Love'], 'Cant Help Falling In Love')
-
-  // loadQuestion('Dzīvnieki', '200', 'Kuram Dzīvniekam Ir garš kakls un Plankumi?', ['Žirafe', 'Zebra', 'Zīlonis'], 'Žirafe')
-  // loadQuestion('Dzīvnieki', '400', 'Lielākais Zīdītājs Uz Zemes?', ['Nīlszirgs', 'Grizlij Lācis', 'Āfrikas Zīlonis'], 'Āfrikas Zīlonis')
-  // loadQuestion('Dzīvnieki', '600', 'Kurš Ir Ātrākais Dzīvnieks uz Zemes?', ['Gepards', 'Leopards', 'Lauva'], 'Gepards')
-  // loadQuestion('Dzīvnieki', '800', 'Kura No Šīm Zivīm Ir Zivs?', ['Zobenzivs', 'Medūza', 'Jūras Zvaigzne'], 'Zobenzivs')
-  // loadQuestion('Dzīvnieki', '1000', 'Kā Dēvē Daudz Flamingi Vienu Viet (Bars Ar Flamingo)?', ['Ganāmpulks', 'Spiets', 'Kolonija'], 'Kolonija')
-
-  // loadQuestion('Cilvēki', '200', 'Kura Ķermeņa Daļa Tiek Izmantota Ožai?', ['Deguns', 'Ausis', 'Kājas'], 'Deguns')
-  // loadQuestion('Cilvēki', '400', 'Kurš Ir Lielākais Orgāns Cilvēka Ķermenī?', ['Aknas', 'Plaušas', 'Āda'], 'Āda')
-  // loadQuestion('Cilvēki', '600', 'Kurš Ir Garākais Kauls Cilvēka Ķermenī?', ['Stilba kauls (Tibia)', 'Augšdelma kauls (Humerus)', 'Ciskas kauls (Femur)'], 'Ciskas kauls (Femur)')
-  // loadQuestion('Cilvēki', '800', 'Jūtīgākais Cilvēka Orgāns?', ['Deguns', 'Āda', 'Acis'], 'Āda')
-  // loadQuestion('Cilvēki', '1000', 'Cik % No Kopējiem Skābekļa Un Asins Resursiem Patērē Smadzenes?', ['25%', '20%', '17%'], '20%')
-
+// const revealQuestion = gameBottom.querySelectorAll(".question")
+// revealQuestion.forEach(button => {
+// button.addEventListener("click", loadQuestion())
+// })
